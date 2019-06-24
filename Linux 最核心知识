@@ -1,0 +1,11 @@
+### Linux 入门
+1. '#'管理员输入提示符，'$'其他用户输入提示符
+2. 管理员的目录为/root，普通用户的目录为/home/username
+3. Linux 下有GNOME 和 KDE 两种图形操作接口，centOS 默认使用 GNOME
+4. man page 文件放入 /usr/share/man， info page文件放入/usr/share/info，其他的文档在/usr/share/doc中
+5. 开机进入图形界面还是字符界面配置在/etc/inittab文件
+6. Linux 下安装软件可以使用 yum 开源软件
+7. 启动输入法按下 ctrl + space 按键
+8. Linux 下是大小写敏感的
+9. 系统关键的目录为/etc、/bin、/sbin、/dev、/lib 不能与 / 根目录挂载在不同的分区上！
+10. 在一些Linux 系统中，umask 的设定保存在 /etc/profile中（对所以用户有效），如果只需要当某个用户生效，那么保存在~/.bash_profile(普通用户)，/root/.profile(root用户)中，
