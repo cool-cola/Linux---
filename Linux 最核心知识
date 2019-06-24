@@ -8,4 +8,14 @@
 7. 启动输入法按下 ctrl + space 按键
 8. Linux 下是大小写敏感的
 9. 系统关键的目录为/etc、/bin、/sbin、/dev、/lib 不能与 / 根目录挂载在不同的分区上！
-10. 在一些Linux 系统中，umask 的设定保存在 /etc/profile中（对所以用户有效），如果只需要当某个用户生效，那么保存在~/.bash_profile(普通用户)，/root/.profile(root用户)中，
+10. 在一些Linux 系统中，umask 的设定保存在 /etc/profile中（对所以用户有效），如果只需要当某个用户生效，那么保存在~/.bash_profile(普通用户)，
+/root/.profile(root用户)中，在centOS中，umask的设定在/etc/bashrc文件中
+11. 跟用户权限有关的文件有/etc/passwd、/etc/shadow、/etc/group、/etc/gshadow四个文件
+    * /etc/passwd 记录用户的UID，用户名，初始组名，家目录，shell名称等
+    * /etc/shadow 记录了用户的密码信息
+    * /etc/group 记录了用户的所有群众的信息（gid 和组名的对应关系）
+    * /etc/gshadow 记录了群组的密码
+12. 开机挂载配置信息在/etc/fstab文件中，实际的文件系统挂载信息是写入到/etc/mtab 和 /proc/mounts两个文件中
+13. 默认的Linux 系统中，关于tty 的数量配置在 /etc/inittab 中，在centOS6.0 以后的版本中，关于tty 的配置转移到了
+/etc/init/start-ttys.conf 文件和 /etc/sysconfig/init 中
+14. 输出系统
