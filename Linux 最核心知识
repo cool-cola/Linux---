@@ -18,4 +18,10 @@
 12. 开机挂载配置信息在/etc/fstab文件中，实际的文件系统挂载信息是写入到/etc/mtab 和 /proc/mounts两个文件中
 13. 默认的Linux 系统中，关于tty 的数量配置在 /etc/inittab 中，在centOS6.0 以后的版本中，关于tty 的配置转移到了
 /etc/init/start-ttys.conf 文件和 /etc/sysconfig/init 中
-14. 输出系统
+14. 输出系统的所有语系使用locale -a 命令，输出iconv 命令支持的所有语系转换使用 iconv --list命令，查看当前语系使用echo $LANG命令，
+常用的中文语系有：
+    * zh_CN
+    * zh_CN.gb2312
+    * zh_CN.gbg18030
+    * zh_CN.gbk
+    * zh_CN.utf8
