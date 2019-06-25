@@ -57,15 +57,15 @@
 3. Linux 下的文件有修改时间 mtime，状态改变时间 ctime 和访问时间 atime，没有文件创建时间的概念
 4. 每块磁盘的第一个扇区最重要，包含64bytes 的磁盘分区表和446bytes 的MBR 主要启动记录区
 5. 编译程序头文件搜索路径
-    -I 指定的路径
-    gcc 的环境变量 C_INCLUDE_PATH、CPULS_INCLUDE_PATH、OBJC_INCLUDE_PATH 指定的路径
-    寻找内定目录
+    * -I 指定的路径
+    * gcc 的环境变量 C_INCLUDE_PATH、CPULS_INCLUDE_PATH、OBJC_INCLUDE_PATH 指定的路径
+    * 寻找内定目录
         * /usr/include
         * /usr/local/include
         * /usr/lib/gcc-lib/i386-linux/2.95.2/include
         * /usr/lib/gcc-lib/i386-linux/2.95.2/../../../../include/g++-3
         * /usr/lib/gcc-lib/i386-linux/2.95.2/../../../../i386-linux/include 编译的时候
-    如果安装gcc 时候指定了prefix 的话，那么内定目录为：
+    * 如果安装gcc 时候指定了prefix 的话，那么内定目录为：
         * /usr/include
         * prefix/include
         * prefix/xxx-xxx-xxx-gnulibc/include
