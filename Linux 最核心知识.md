@@ -70,3 +70,25 @@
         * prefix/include
         * prefix/xxx-xxx-xxx-gnulibc/include
         * prefix/lib/gcc-lib/xxx-xxx-xxx-gnulibc/2.8.1/c
+ 6. 编译时库文件搜索路径
+    * -L 指定的路径
+    * gcc 的环境变量 LIBRARY_PATH 指定的路径
+    * 内定目录指定的路径
+        * /lib
+        * /usr/lib
+        * /usr/local/lib
+7. 运行时动态库搜索路径
+    * 编译目标代码时指定的动态库搜索路径（gcc 命令 -wl，-rpath）
+    * 环境变量 LD_LIBRARY_PATH 指定的动态库搜素路径
+    * 配置文件 /etc/ld.so.conf 中指定的动态库搜素路径
+    * 默认的动态库搜索路径 /lib
+    * 默认的动态库搜索路径 /usr/lib
+    **记住，没有/usr/local/lib，需要自己添加到ld.so.conf 中**
+   
+### 3. shell 程序设计（极度重要）
+1. 直接在shell 中定义变量的时候，= 两边都不能有空格
+2. 在shell 脚本中定义变量的时候，= 连边可以有空格
+3. shell 脚本的if 命令一定要有；号和then
+4. shell 脚本的循环一定要有 do 和 done
+5. python 脚本与 C++语法基本一致，区别是if、for、while 后面一定要有：符号
+6. awk命令内部的 command 语法与shell 的语法完全不一样，这个很坑，不过幸运的是 awk 内部的语法很符合C++ 的语法，比shell 语法好用很多了
