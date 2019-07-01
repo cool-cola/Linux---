@@ -105,9 +105,9 @@
 >4. #SUBDIRS 是makefile 变量
 > SUBDIRS= RttCalculator RttClient RttStore RttSlideWindow RttCalculator
 >5. #define 定义一个命令包，其中subdir 是在shell 命令中定义的，所以是 shell 变量，需要$$ 符号
-> define make_subdir
-> @for subdir in $(SUBDIRS); do \
->        (cd $$subdir && make $1) \
-> done;
-> endef;
+''' define make_subdir
+@for subdir in $(SUBDIRS); do \
+        (cd $$subdir && make $1) \
+done;
+endef;
 '''
