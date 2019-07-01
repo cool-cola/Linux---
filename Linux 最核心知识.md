@@ -100,19 +100,13 @@
 >
 > VERSION:=$(shell if [$$(git rev-parse --is-inside-work-tree)]);then git svn info;else svn info; fi | awk '{if(NR==5){print $$0}}'|awk 'print $$2'
 >
-> sed -i '$$a \\tgcc -o $(subst .d, .o, $@) -c $<' $@;
+> 3. sed -i '$$a \\tgcc -o $(subst .d, .o, $@) -c $<' $@;
 >
 > #SUBDIRS 是makefile 变量
 > SUBDIRS= RttCalculator RttClient RttStore RttSlideWindow RttCalculator
->
 > #define 定义一个命令包，其中subdir 是在shell 命令中定义的，所以是 shell 变量，需要$$ 符号
->
 > define make_subdir
->
 > @for subdir in $(SUBDIRS); do \
->
 >        (cd $$subdir && make $1) \
->
 > done;
-> 
 > endef;
