@@ -93,13 +93,13 @@
 5. python 脚本与 C++语法基本一致，区别是if、for、while 后面一定要有：符号
 6. awk命令内部的 command 语法与shell 的语法完全不一样，这个很坑，不过幸运的是 awk 内部的语法很符合C++ 的语法，比shell 语法好用很多了
 7. 在makefile 中使用shell命令，语法和 shell 脚本一样，不过makefile 中要使用 shell 中的变量，需要两个$$符号，而不是一个$符号，比如：
->#makefile
+> #makefile
 >
->#(1) 在sed 命令中的正则表达式中定义的变量都是shell 变量，如$符号
+> #(1) 在sed 命令中的正则表达式中定义的变量都是shell 变量，如$符号
 >
->#(2) 在awk 命令中预设的变量都是 shell 变量，比如$0, $1 等
+> #(2) 在awk 命令中预设的变量都是 shell 变量，比如$0, $1 等
 >
->VERSION:=$(shell if [$$(git rev-parse --is-inside-work-tree)]);then git svn info;else svn info; fi | awk '{if(NR==5){print $$0}}'|awk 'print $$2'
+> VERSION:=$(shell if [$$(git rev-parse --is-inside-work-tree)]);then git svn info;else svn info; fi | awk '{if(NR==5){print $$0}}'|awk 'print $$2'
 >
 > sed -i '$$a \\tgcc -o $(subst .d, .o, $@) -c $<' $@;
 >
@@ -115,4 +115,5 @@
 >        (cd $$subdir && make $1) \
 >
 > done;
-> endef
+> 
+> endef;
