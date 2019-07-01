@@ -95,9 +95,8 @@
 7. 在makefile 中使用shell命令，语法和 shell 脚本一样，不过makefile 中要使用 shell 中的变量，需要两个$$符号，而不是一个$符号，比如：
 > #makefile
 >
-> #(1) 在sed 命令中的正则表达式中定义的变量都是shell 变量，如$符号
->
-> #(2) 在awk 命令中预设的变量都是 shell 变量，比如$0, $1 等
+>1. 在sed 命令中的正则表达式中定义的变量都是shell 变量，如$符号
+>2. 在awk 命令中预设的变量都是 shell 变量，比如$0, $1 等
 >
 > VERSION:=$(shell if [$$(git rev-parse --is-inside-work-tree)]);then git svn info;else svn info; fi | awk '{if(NR==5){print $$0}}'|awk 'print $$2'
 >
