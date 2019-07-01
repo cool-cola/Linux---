@@ -96,9 +96,23 @@
 >#makefile
 >
 >#(1) 在sed 命令中的正则表达式中定义的变量都是shell 变量，如$符号
-
+>
 >#(2) 在awk 命令中预设的变量都是 shell 变量，比如$0, $1 等
-
+>
 >VERSION:=$(shell if [$$(git rev-parse --is-inside-work-tree)]);then git svn info;else svn info; fi | awk '{if(NR==5){print $$0}}'|awk 'print $$2'
-
+>
 > sed -i '$$a \\tgcc -o $(subst .d, .o, $@) -c $<' $@;
+>
+> #SUBDIRS 是makefile 变量
+> SUBDIRS= RttCalculator RttClient RttStore RttSlideWindow RttCalculator
+>
+> #define 定义一个命令包，其中subdir 是在shell 命令中定义的，所以是 shell 变量，需要$$ 符号
+>
+> define make_subdir
+>
+> @for subdir in $(SUBDIRS); do \
+>
+>        (cd $$subdir && make $1) \
+>
+> done;
+> endef
