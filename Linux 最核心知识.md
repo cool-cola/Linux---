@@ -109,6 +109,7 @@
            (cd $$subdir && make $1) \
    done;
    endef;
+
 8. 在awk 命令中打印用print，在shell 中用 echo
 9. 在awk 命令中也可以使用shell 中定义得变量，但是默认是不能使用的，需要做特殊处理
    coreNumber='cat /proc/cpuinfo | grep processor | wc -l'
