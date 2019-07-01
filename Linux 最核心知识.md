@@ -99,9 +99,7 @@
 >2. 在awk 命令中预设的变量都是 shell 变量，比如$0, $1 等
 >
 > VERSION:=$(shell if [$$(git rev-parse --is-inside-work-tree)]);then git svn info;else svn info; fi | awk '{if(NR==5){print $$0}}'|awk 'print $$2'
->
 > 3. sed -i '$$a \\tgcc -o $(subst .d, .o, $@) -c $<' $@;
->
 >4. #SUBDIRS 是makefile 变量
 > SUBDIRS= RttCalculator RttClient RttStore RttSlideWindow RttCalculator
 >5. #define 定义一个命令包，其中subdir 是在shell 命令中定义的，所以是 shell 变量，需要$$ 符号
@@ -111,4 +109,9 @@
            (cd $$subdir && make $1) \
    done;
    endef;
-
+8. 在awk 命令中打印用print，在shell 中用 echo
+9. 在awk 命令中也可以使用shell 中定义得变量，但是默认是不能使用的，需要做特殊处理
+   coreNumber='cat /proc/cpuinfo | grep processor | wc -l'
+   cpulist='ps auxf --width=1000 | grep $1 | grep -v grep | awk -v cpuCore=$coreNumber '{print $3/cpuCores}'';
+10. 直接在shell 窗口输入 shell 命令是可以换行的，在shell 脚本中输入shell 命令也可以换行
+11. 
