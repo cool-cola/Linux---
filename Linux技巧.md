@@ -37,7 +37,7 @@ tail -f 加文件名，可以实时显示日志文件内容。当然，使用les
 ### 5. 磁盘或内存情况查看
 #### 5.1 怎么知道当前磁盘是否满了吗？
 
-'''
+```
 [root@VM_64_4_centos ~]# df -h
 Filesystem      Size  Used Avail Use% Mounted on
 /dev/vda1        50G  4.0G   43G   9% /
@@ -46,4 +46,4 @@ tmpfs           496M   24K  496M   1% /dev/shm
 tmpfs           496M  500K  496M   1% /run
 tmpfs           496M     0  496M   0% /sys/fs/cgroup
 tmpfs           100M     0  100M   0% /run/user/0
-'''
+```
