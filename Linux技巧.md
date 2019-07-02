@@ -210,7 +210,16 @@ cookie: uin=o100007799884; token=2b547a450f0b[root@VM_64_4_centos ~]#
 编辑完成后，ctrl + d即可保存
 
 ### 22. 查看elf文件
+#### 22.1 查看elf文件头信息
+例如：
+> $ readelf -h filename
 
+我们在显示结果中, 可以看到运行的平台，elf文件类型，大小端情况等
+
+#### 22.2 查看库中是否包含某个接口
+> $ nm filename | grep interface
+
+这里是从文件filename 中查看是否包含interface 接口，前提是该文件包含符号表。
 
 
 
