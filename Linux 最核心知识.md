@@ -99,7 +99,7 @@
 >2. 在awk 命令中预设的变量都是 shell 变量，比如$0, $1 等
 >
 > VERSION:=$(shell if [$$(git rev-parse --is-inside-work-tree)]);then git svn info;else svn info; fi | awk '{if(NR==5){print $$0}}'|awk 'print $$2'
-> 3. sed -i '$$a \\tgcc -o $(subst .d, .o, $@) -c $<' $@;
+>3. sed -i '$$a \\tgcc -o $(subst .d, .o, $@) -c $<' $@;
 >4. #SUBDIRS 是makefile 变量
 > SUBDIRS= RttCalculator RttClient RttStore RttSlideWindow RttCalculator
 >5. #define 定义一个命令包，其中subdir 是在shell 命令中定义的，所以是 shell 变量，需要$$ 符号
@@ -115,4 +115,13 @@
    coreNumber='cat /proc/cpuinfo | grep processor | wc -l'
    cpulist='ps auxf --width=1000 | grep $1 | grep -v grep | awk -v cpuCore=$coreNumber '{print $3/cpuCores}'';
 10. 直接在shell 窗口输入 shell 命令是可以换行的，在shell 脚本中输入shell 命令也可以换行
-11. 
+11. 在shell 脚本中使用awk 命令，在awk 中的''部分中的命令，也是可以换行的，不过在BEGIN 命令后都必须紧跟{符号，在END 前面必须紧挨着}符号
+12. 在shell 脚本和awk 命令中，对字符串的拼接不能采用+、+=符号，而是直接将多个变量放在一起就可以拼接了，比如
+   var='abc'
+   var2='def'
+   myvar=$var$var2
+13. shell 中对数值的操作需要'a=$(($a+$b))',不能'a=$($a+$b)'，更不能'a=$a+$b'
+14. 在awk 中使用变量就像c语言，完全不用加上$符号，在shell 中则必须加上$符号
+15. 对于 shell 脚本中的 [] 和 [[]] 判断符号，在中括号内的每一个组件都要有空格键来分隔！
+16. 在 awk 中要调用 shell 命令
+
