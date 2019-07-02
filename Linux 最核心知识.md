@@ -142,7 +142,26 @@ if [$a -gt $b -o $a -lt $c]
 26. shell 本身不支持浮点数运算，(()) 之类的数学运算符只能进行整数运算。要想在shell 中运算浮点数，只能借助于bc，awk或则perl命令
 27. awk 的所有数字，都以double 的浮点值表示，所以算术运算都是浮点运算
 28. 字符串转数字：`s='123', n=s+0` 那么此时n就是数字了，而且还是double型，如果需要为整型，可以用`n=int(s)`达到目的
-
+------------------------------------
+* shell 一定要写在target 里，否则你写了也白费劲，是会被make 忽略的
+```
+@echo "Building all..."
+all:
+    @echo "Begin"
+# 只会打印Begin
+```
+* 每一行的 shell 都是在独立的进程中运行的，如果你在上一行为一个变量赋值，不要指望他在下一行有效，比如：
+```
+@CROSS_COMPILE=mipsel-linux-
+@echo $(CROSS_COMPILE)
+```
+打印的结果不会是mipsel-linux-，如果你想得到所要的结果，就并为一条shell 吧：
+```
+@CROSS_COMPILE=mipsel-linux-；echo @echo $(CROSS_COMPILE)
+或者
+@CROSS_COMPILE=mipsel-linux- \
+   echo @echo $(CROSS_COMPILE)
+```
 
 
 
