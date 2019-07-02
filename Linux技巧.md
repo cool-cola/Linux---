@@ -172,7 +172,45 @@ sys 0m0.004s
 这里综合使用了 ps、sort、head 命令
 
 ### 17. 快速查看你需要的命令
-我们知道man 可以查看命令的帮助手册，但是如果我们想要某个功能却不知道使用那个命令呢？
+我们知道man 可以查看命令的帮助手册，但是如果我们想要某个功能却不知道使用那个命令呢？别着急，还是可以使用man ：
+```
+[root@VM_64_4_centos ~]# man -k "copy file"
+cp (1)               - copy files and directories
+cpio (1)             - copy files to and from archives
+File::Copy (3pm)     - Copy files or filehandles
+install (1)          - copy files and set attributes
+```
+使用 -k 参数，使得与copy file 相关的帮助手册都显示出来了。
+
+### 18. 命令行下的复制粘贴
+我们知道，在命令行下，复制不能再是ctrl + c 了，因为它表示终止当前程序，而控制台下的复制粘贴需要使用下面的快捷键：
+```
+* CTRL + insert
+* shift + insert
+```
+
+## 19. 搜索包含某个字符串的文件
+例如，要在当前目录下查找包含test字符串的文件
+```
+[root@VM_64_4_centos ~]# grep -rn 'producer'
+.bash_history:29:vim producer.py 
+.bash_history:39:python producer.py
+```
+它便可以找到该字符串在哪个文件的第几行。
+
+### 20. 屏幕冻结
+程序运行时，终端可能输出大量的日志，你想简单查看一下，又不想记录日志文件，此时可以使用ctrl+s 按键，冻结屏幕，使得日志不再继续输出，而如果想要恢复，可使用ctrl+q退出冻结。
+
+### 21. 无编辑器情况下编辑文本文件
+如果在某些系统上连基本的vi编辑器都没有，那么可以使用下面的方式进行编辑内容：
+```
+[root@VM_64_4_centos ~]# cat >cookie.txt 
+cookie: uin=o100007799884; token=2b547a450f0b[root@VM_64_4_centos ~]#
+```
+编辑完成后，ctrl + d即可保存
+
+### 22. 查看elf文件
+
 
 
 
