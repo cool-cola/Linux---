@@ -103,12 +103,13 @@
 >4. #SUBDIRS 是makefile 变量
 > SUBDIRS= RttCalculator RttClient RttStore RttSlideWindow RttCalculator
 >5. #define 定义一个命令包，其中subdir 是在shell 命令中定义的，所以是 shell 变量，需要$$ 符号
-   
+ ```  
    define make_subdir
    @for subdir in $(SUBDIRS); do \
            (cd $$subdir && make $1) \
    done;
    endef;
+```
 
 8. 在awk 命令中打印用print，在shell 中用 echo
 9. 在awk 命令中也可以使用shell 中定义得变量，但是默认是不能使用的，需要做特殊处理
@@ -123,5 +124,26 @@
 13. shell 中对数值的操作需要'a=$(($a+$b))',不能'a=$($a+$b)'，更不能'a=$a+$b'
 14. 在awk 中使用变量就像c语言，完全不用加上$符号，在shell 中则必须加上$符号
 15. 对于 shell 脚本中的 [] 和 [[]] 判断符号，在中括号内的每一个组件都要有空格键来分隔！
-16. 在 awk 中要调用 shell 命令
+16. 在 awk 中要调用 shell 命令，需要用 system 函数，在python 中也是一样，需要使用system 函数来调用 shell命令
+17. awk 命令中能够使用的函数，makefile中能够使用的函数，shell命令中能够使用的函数，均有所不同
+18. shell 脚本中true 是 0， false 是 1
+19. shell 可以使用（（））、[]、[[]]，test 作为判断符号，语法格式如下
+```
+if ((a > b)) || ((a < c))
+if [[$a > $b]] || [[$a < $c]]
+if [$a -gt $b -o $a -lt $c]
+```
+20. (())、[]、[[]] 都支持对数值使用 >, <, <=, >=, !=等操作符
+21. (())不支持试用-eq，-lt、-gt、-ne、-le、-ge等选项，而[] 和[[]] 则支持这些选项
+22. (()) 和[[]] 内部支持用||、&&、!符号表达逻辑关系
+23. [] 内部不支持用||、&&、!符号表达逻辑关系
+24. (()) 中引用变量不需要$ 符号，其他任何shell 地方都需要使用$ 符号，这是最关键的
+25. python 用 or、and、not表达逻辑关系，不能用||、&&、！符号表达逻辑关系
+26. shell 本身不支持浮点数运算，(()) 之类的数学运算符只能进行整数运算。要想在shell 中运算浮点数，只能借助于bc，awk或则perl命令
+27. awk 的所有数字，都以double 的浮点值表示，所以算术运算都是浮点运算
+28. 字符串转数字：`s='123', n=s+0` 那么此时n就是数字了，而且还是double型，如果需要为整型，可以用`n=int(s)`达到目的
+
+
+
+
 
